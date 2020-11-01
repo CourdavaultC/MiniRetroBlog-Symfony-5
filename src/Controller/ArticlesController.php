@@ -37,6 +37,10 @@ class ArticlesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $article->setUsers($this->getUser());
+            $article->setActive(false);
+
             // On récupère les images transmises
             $images =$form->get('images')->getData();
 
@@ -88,23 +92,25 @@ class ArticlesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $article->setUsers($this->getUser());
+            $article->setActive(false);
              // On récupère les images transmises
-             $images =$form->get('images')->getData();
+            $images =$form->get('images')->getData();
 
              // On boucle sur les images
-             foreach($images as $image){
+            foreach($images as $image){
                  // On génère un nouveau nom de fichier
-                 $fichier = md5(uniqid()).'.'.$image->guessExtension();
+                $fichier = md5(uniqid()).'.'.$image->guessExtension();
  
                  // On copie le fichier dans le dossier upload
-                 $image->move(
+                $image->move(
                      $this->getParameter('images_directory'),
                      $fichier
-                 );
+                );
                  // On stocke l'image dans la base de donnée
-                 $img = new Images();
-                 $img->setName($fichier);
-                 $article->addImage($img);
+                $img = new Images();
+                $img->setName($fichier);
+                $article->addImage($img);
              }
  
             $this->getDoctrine()->getManager()->flush();
