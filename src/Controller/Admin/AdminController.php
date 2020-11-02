@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Articles;
 use App\Entity\Categories;
@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/admin", name="admin_")
- * @package APP\Controller
+ * @package APP\Controller\Admin
  */
 class AdminController extends AbstractController
 {

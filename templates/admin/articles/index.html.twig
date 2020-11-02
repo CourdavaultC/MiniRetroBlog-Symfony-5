@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les articles{% endblock %}
+
+{% block body %}
+    <h1>Gérer les articles</h1>
+    {#<a class="btn btn-primary" href="{{ path("admin_categories_ajout") }}" role="button">Ajouter un article</a>#}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Date</th>
+                <th scope="col">Active</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <th scope="row">{{ article.id }}</th>
+                <td>{{ article.title }}</td>
+                <td>{{ article.createdAt|date }}</td>
+                <td>
+                    <label class="switch">
+                        <input type="checkbox" {{(article.active) ? 'checked' : ''}} data-id="{{article.id}}">
+                            <span class="slider"></span>
+                    </label>
+                </td>
+                <td>
+                    <a href="{{ path('articles_show', {'id': article.id}) }}">show</a>
+                    <a href="{{ path('articles_edit', {'id': article.id}) }}">edit</a>
+                </td>
+                <td class="text-center">
+                    {#{<a class="btn btn-primary" href="{{ path("admin_categories_modifier", {id: categorie.id}) }}" role="button">Modifier </a>#}
+                </td>
+            </tr>
+        {% endfor %}    
+        </tbody>
+    </table>
+
+    <a href="{{ path('articles_new') }}">Create new</a>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        window.onload = () => {
+            let activer = document.querySelectorAll("[type=checkbox]")
+            for(let bouton of activer){
+                bouton.addEventListener("click", function(){
+                    let xmlhttp = new XMLHttpRequest;
+
+                    xmlhttp.open("get", `/admin/articles/activer/${this.dataset.id}`);
+                    xmlhttp.send()
+                })
+            }
+        }
+    </script>
+{% endblock %}
