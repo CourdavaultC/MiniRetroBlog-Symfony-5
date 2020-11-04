@@ -16,20 +16,36 @@
             </a>
 
             <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link active text-white font-weight-bold" href="{{ path("app_home")}}">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white font-weight-bold" href="#">Articles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white font-weight-bold" href="{{ path("app_register") }}">inscription</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white font-weight-bold" href="{{ path("app_login") }}">connexion</a>
-                </li>             
+                {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+                    <li class="nav-item">
+                        <a class="nav-link active text-white font-weight-bold" href="{{ path("app_home")}}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white font-weight-bold" href="#">Articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white font-weight-bold" href="{{ path("app_register") }}">inscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white font-weight-bold" href="{{ path("app_login") }}">Connexion</a>
+                    </li>
+                {% endif %}
+
+                {% if is_granted("IS_AUTHENTICATED_FULLY")%}
+                    <li class="nav-item">
+                        <a class="nav-link active text-white font-weight-bold" href="{{ path("app_home")}}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white font-weight-bold" href="{{ path("app_logout") }}">Déconnexion</a>
+                    </li>                
+                {% endif %}
+
+                {% if is_granted("ROLE_ADMIN")%}
+                    <a class="nav-link text-white font-weight-bold" href="{{ path("admin_articles_index") }}">Gestion du BLOG</a>
+                {% endif %}          
             </ul>
 
+            
             <!--<a class="navbar-brand text-white" href="{{ path("app_home")}}">Accueil</a>
             <a class="navbar-brand text-white" href="{{ path("app_home")}}">Accueil</a>
             <a class="navbar-brand text-white" href="{{ path("app_home")}}">Accueil</a>
@@ -51,6 +67,15 @@
                 <div class="card w-100 bg-danger">
                     <div class="card-body">
                         <p class="card-text text-white text-center">&copy; Copyright 2020 by (>'.')> MiniRetroBlog <('.'<)</p>
+                        <span style="font-size: 48px; color: Dodgerblue;">
+                            <a href=""><i class="fab fa-twitter-square"></i></a>
+                        </span>
+                        <span style="font-size: 48px; color: Dodgerblue;">
+                            <a href=""><i class="fab fa-facebook-square"></i></a>
+                        </span>
+                        <span style="font-size: 48px; color: Dodgerblue;">
+                            <a href=""><i class="fab fa-github-square"></i></a>
+                        </span>
                     </div>
                 </div>
             {% endblock %}

@@ -43,7 +43,7 @@ class AdminController extends AbstractController
             $em->persist($categorie);
             $em->flush();
 
-            return $this->redirectToRoute('admin_home');
+            return $this->redirectToRoute('admin');
         }
 
         return $this->render('admin/categories/ajout.html.twig', [

@@ -4,12 +4,13 @@
 
 {% block body %}
     <h1>Gérer les articles</h1>
-    {#<a class="btn btn-primary" href="{{ path("admin_categories_ajout") }}" role="button">Ajouter un article</a>#}
-    <table class="table">
+    <a class="btn btn-primary" href="{{ path("admin_categories_home") }}" role="button">Ajouter une catégorie</a>
+    <table class="table text-center">
         <thead>
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Titre</th>
+                <th scope="col">Catégorie</th>
                 <th scope="col">Date</th>
                 <th scope="col">Active</th>
                 <th scope="col">Actions</th>
@@ -20,6 +21,7 @@
             <tr>
                 <th scope="row">{{ article.id }}</th>
                 <td>{{ article.title }}</td>
+                <td>{{ article.categories.name }}</td>
                 <td>{{ article.createdAt|date }}</td>
                 <td>
                     <label class="switch">
@@ -28,18 +30,18 @@
                     </label>
                 </td>
                 <td>
-                    <a href="{{ path('admin_articles_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('admin_articles_edit', {'id': article.id}) }}">edit</a>
+                    <a href="{{ path('admin_articles_show', {'id': article.id}) }}">Aperçu</a>
+                    <a href="{{ path('admin_articles_edit', {'id': article.id}) }}">Editer</a>
                 </td>
                 <td class="text-center">
-                    {#{<a class="btn btn-primary" href="{{ path("admin_categories_modifier", {id: categorie.id}) }}" role="button">Modifier </a>#}
+                    {#<a class="btn btn-primary" href="{{ path("admin_categories_modifier", {id: categorie.id}) }}" role="button">Modifier </a>#}
                 </td>
             </tr>
         {% endfor %}    
         </tbody>
     </table>
 
-    <a href="{{ path('admin_articles_new') }}">Create new</a>
+    <a href="{{ path('admin_articles_new') }}">Rédiger un article</a>
 {% endblock %}
 
 {% block javascripts %}

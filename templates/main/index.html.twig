@@ -7,15 +7,15 @@
         {% for article in articles %}
             <div class="card">
                 <div class="">
-                    <img src="{{ asset('uploads/' ~ article.images[0].name)|imagine_filter('square') }}" alt="{{ article.title }}">
-                    <div class="card-body">
+                    <a href="{{ path('articles_details', {slug: article.slug}) }}"><img src="{{ asset('uploads/' ~ article.images[0].name)|imagine_filter('square') }}" alt="{{ article.title }}">
+                    <div class="card-body"></a>
                         <h5 class="card-title">{{article.title}}</h5>
                         <p class="card-text">Catégorie : {{article.categories.name}}</p>
                         <p class="card-text">{{article.content|striptags|u.truncate(25, '...')}}</p>
                         <div class="text-danger">
                             <i class="fas fa-heart"></i>
                         </div>
-                        <a href="{{ path('articles_details', {slug: article.slug}) }}" class="btn btn-primary">Lire la suite</a>
+                        <a href="{{ path('articles_details', {slug: article.slug}) }}" class="btn btn-primary">Lire l'article</a>
                     </div>
                 </div>
             </div>   

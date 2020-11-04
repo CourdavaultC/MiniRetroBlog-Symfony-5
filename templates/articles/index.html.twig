@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Articles index{% endblock %}
+{% block title %}Liste des articles{% endblock %}
 
 {% block body %}
-    <h1>Articles index</h1>
+    <h1>Liste des articles</h1>
 
     <table class="table">
         <thead>
@@ -21,8 +21,8 @@
                 <td>{{ article.title }}</td>
                 <td>{{ article.content }}</td>
                 <td>
-                    <a href="{{ path('admin_articles_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('admin_articles_edit', {'id': article.id}) }}">edit</a>
+                    <a href="{{ path('admin_articles_show', {'id': article.id}) }}">Aperçu</a>
+                    <a href="{{ path('admin_articles_edit', {'id': article.id}) }}">Editer</a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_articles_new') }}">Create new</a>
+    <a href="{{ path('admin_articles_new') }}">Nouvel article</a>
 {% endblock %}
