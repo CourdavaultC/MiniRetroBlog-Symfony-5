@@ -12,10 +12,10 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="app_home")
      */
-    public function index(ArticlesRepository $articlesRepo): Response
+    public function index(ArticlesRepository $articlesRepository): Response
     {
         return $this->render('main/index.html.twig', [
-            'articles' => $articlesRepo->findBy(['active' => true], ['created_at' => 'desc']),
+            'articles' => $articlesRepository->findBy(['active' => true], ['created_at' => 'desc'], 5),
         ]);
     }
 }

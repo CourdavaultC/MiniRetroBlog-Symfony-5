@@ -28,8 +28,8 @@
                     </label>
                 </td>
                 <td>
-                    <a href="{{ path('articles_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('articles_edit', {'id': article.id}) }}">edit</a>
+                    <a href="{{ path('admin_articles_show', {'id': article.id}) }}">show</a>
+                    <a href="{{ path('admin_articles_edit', {'id': article.id}) }}">edit</a>
                 </td>
                 <td class="text-center">
                     {#{<a class="btn btn-primary" href="{{ path("admin_categories_modifier", {id: categorie.id}) }}" role="button">Modifier </a>#}
@@ -39,7 +39,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('articles_new') }}">Create new</a>
+    <a href="{{ path('admin_articles_new') }}">Create new</a>
 {% endblock %}
 
 {% block javascripts %}

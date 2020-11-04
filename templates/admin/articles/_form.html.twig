@@ -2,12 +2,12 @@
     {{ form_widget(form) }}
 
     {# Vérifier si la route est "articles_edit" on affiche les images #}
-    {% if app.request.attributes.get('_route') == 'articles_edit' %}
+    {% if app.request.attributes.get('_route') == 'admin_articles_edit' %}
         <h2>Images</h2>
         {% for image in article.images %}
             <div>
                 <img src="{{ asset('/uploads/' ~ image.name) }}" alt="Image" width="150">
-                <a href="{{ path('articles_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+                <a href="{{ path('admin_articles_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
             </div>
         {% endfor %}
     {% endif %}

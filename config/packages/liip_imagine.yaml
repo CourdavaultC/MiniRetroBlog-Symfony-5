@@ -9,3 +9,11 @@ liip_imagine:
                 thumbnail:
                     size: [300, 300]
                     mode: outbound
+        banniere:
+            quality: 80
+            filters:
+                upscale:
+                    min: [800,400]
+                thumbnail:
+                    size: [800, 400]
+                    mode: outbound
