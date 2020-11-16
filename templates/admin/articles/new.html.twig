@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouvelle Article{% endblock %}
+{% block title %}Nouvel Article{% endblock %}
 
 {% block body %}
     <h1>Rédiger un nouvel article</h1>
 
     {{ include('articles/_form.html.twig') }}
 
-    <a href="{{ path('admin_articles_index') }}">back to list</a>
+    <a href="{{ path('admin_articles_index') }}">Retour</a>
 {% endblock %}

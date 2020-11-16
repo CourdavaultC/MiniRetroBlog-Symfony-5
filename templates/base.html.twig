@@ -8,49 +8,50 @@
         <link rel="stylesheet" href="{{ asset("css/styles.css") }}">
     </head>
     <body>
-        <nav class="navbar navbar-light bg-danger">
-            <a class="navbar-brand" href="{{ path("app_home")}}">
-                <img src="{{asset("design/logo_mario.png")}}" width="150" height="120" class="d-inline-block align-mid rounded-circle" alt="" loading="lazy">
-                <p class="text-white text-center">MiniRetroBlog</p>
-                    
-            </a>
+        <div id="header">
+            {% block header %}
+                <nav class="navbar navbar-light bg-danger">
+                    <a class="navbar-brand" href="{{ path("app_home")}}">
+                        <img src="{{asset("design/logo_mario.png")}}" width="150" height="120" class="d-inline-block align-mid rounded-circle" alt="" loading="lazy">
+                        <p class="text-white text-center">MiniRetroBlog</p> 
+                    </a>
 
-            <ul class="nav">
-                {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
-                    <li class="nav-item">
-                        <a class="nav-link active text-white font-weight-bold" href="{{ path("app_home")}}">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold" href="#">Articles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold" href="{{ path("app_register") }}">inscription</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold" href="{{ path("app_login") }}">Connexion</a>
-                    </li>
-                {% endif %}
+                    <ul class="nav">
+                        {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+                            <li class="nav-item">
+                                <a class="nav-link active text-white font-weight-bold" href="{{ path("app_home")}}">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white font-weight-bold" href="#">Articles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white font-weight-bold" href="{{ path("app_register") }}">Inscription</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white font-weight-bold" href="{{ path("app_login") }}">Connexion</a>
+                            </li>
+                        {% endif %}
 
-                {% if is_granted("IS_AUTHENTICATED_FULLY")%}
-                    <li class="nav-item">
-                        <a class="nav-link active text-white font-weight-bold" href="{{ path("app_home")}}">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold" href="{{ path("app_logout") }}">Déconnexion</a>
-                    </li>                
-                {% endif %}
+                        {% if is_granted("IS_AUTHENTICATED_FULLY")%}
+                            <li class="nav-item">
+                                <a class="nav-link active text-white font-weight-bold" href="{{ path("app_home")}}">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-white font-weight-bold" href="{{ path("users")}}">Profil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white font-weight-bold" href="{{ path("app_logout") }}">Déconnexion</a>
+                            </li>                
+                        {% endif %}
 
-                {% if is_granted("ROLE_ADMIN")%}
-                    <a class="nav-link text-white font-weight-bold" href="{{ path("admin_articles_index") }}">Gestion du BLOG</a>
-                {% endif %}          
-            </ul>
-
-            
-            <!--<a class="navbar-brand text-white" href="{{ path("app_home")}}">Accueil</a>
-            <a class="navbar-brand text-white" href="{{ path("app_home")}}">Accueil</a>
-            <a class="navbar-brand text-white" href="{{ path("app_home")}}">Accueil</a>
-            <a class="navbar-brand text-white" href="{{ path("app_home")}}">Accueil</a>-->
-        </nav>
+                        {% if is_granted("ROLE_ADMIN")%}
+                            <a class="nav-link text-white font-weight-bold" href="{{ path("admin_articles_index") }}">Gestion du BLOG</a>
+                        {% endif %}          
+                    </ul>
+                </nav>
+            {% endblock %}
+        </div>
+        
         
         
 
@@ -68,13 +69,13 @@
                     <div class="card-body">
                         <p class="card-text text-white text-center">&copy; Copyright 2020 by (>'.')> MiniRetroBlog <('.'<)</p>
                         <span style="font-size: 48px; color: Dodgerblue;">
-                            <a href=""><i class="fab fa-twitter-square"></i></a>
+                            <a href="https://twitter.com/CourdavaultChr2/"><i class="fab fa-twitter-square"></i></a>
                         </span>
                         <span style="font-size: 48px; color: Dodgerblue;">
-                            <a href=""><i class="fab fa-facebook-square"></i></a>
+                            <a href="https://www.facebook.com/christophe.courdavault/"><i class="fab fa-facebook-square"></i></a>
                         </span>
                         <span style="font-size: 48px; color: Dodgerblue;">
-                            <a href=""><i class="fab fa-github-square"></i></a>
+                            <a href="https://github.com/CourdavaultC"><i class="fab fa-github-square"></i></a>
                         </span>
                     </div>
                 </div>

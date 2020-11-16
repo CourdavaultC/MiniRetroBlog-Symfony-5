@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ConsolesMinis{% endblock %}
+
+{% block body %}
+    <h1>Edit ConsolesMinis</h1>
+
+    {{ include('consoles_minis/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('consoles_minis_index') }}">back to list</a>
+
+    {{ include('consoles_minis/_delete_form.html.twig') }}
+{% endblock %}

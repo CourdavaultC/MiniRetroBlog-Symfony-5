@@ -19,6 +19,25 @@ class ArticlesRepository extends ServiceEntityRepository
         parent::__construct($registry, Articles::class);
     }
 
+    /**
+     * Recherche les articles en fonction du formulaire
+     * @return void
+     */
+    public function search($words = null, $categorie = null){
+        $query = $this->createQueryBuilder('a');
+        $query->where('a.active = 1');
+        if($words != null){
+            $query->andWhere('MATCH_AGAINST(a.title, a.content) AGAINST (:words boolean)>0')
+                ->setParameter('words', $words);
+        }
+        if($categorie != null){
+            $query->leftJoin('a.categories', 'c');
+            $query->andWhere('c.id = :id')
+                ->setParameter('id', $categorie);
+        }
+        return $query->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Articles[] Returns an array of Articles objects
     //  */

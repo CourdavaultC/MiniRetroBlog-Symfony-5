@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ConsolesMinis{% endblock %}
+
+{% block body %}
+    <h1>Create new ConsolesMinis</h1>
+
+    {{ include('consoles_minis/_form.html.twig') }}
+
+    <a href="{{ path('consoles_minis_index') }}">back to list</a>
+{% endblock %}
