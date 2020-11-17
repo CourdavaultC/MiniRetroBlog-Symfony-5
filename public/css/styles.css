@@ -1,5 +1,20 @@
+body{
+    background-image: url("../design/street-of-rage-bg.jpg");
+    background-position: center;
+    background-size: auto;
+    background-attachment: fixed;
+}
+
+h1, h2, label{
+    color: white;
+}
+
 i.fab{
     color: white;
+}
+
+table{
+    background-color: white;
 }
 
 #header{
@@ -7,4 +22,8 @@ i.fab{
     width: 100%;
     top: 0;
     z-index: 1;
+}
+
+li.nav-item{
+    font-size: larger;
 }

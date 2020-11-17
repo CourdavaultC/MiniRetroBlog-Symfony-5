@@ -10,10 +10,10 @@
     <body>
         <div id="header">
             {% block header %}
-                <nav class="navbar navbar-light bg-danger">
-                    <a class="navbar-brand" href="{{ path("app_home")}}">
-                        <img src="{{asset("design/logo_mario.png")}}" width="150" height="120" class="d-inline-block align-mid rounded-circle" alt="" loading="lazy">
-                        <p class="text-white text-center">MiniRetroBlog</p> 
+                <nav class="navbar navbar-light bg-danger" style="height:auto;">
+                    <a class="navbar-brand" style="text-align:center" href="{{ path("app_home")}}">
+                        <p style=""><img src="{{asset("design/logo_mario.png")}}" width="100" height="100" class="d-inline-block align-mid rounded-circle" alt="logo ganbare retro player" loading="lazy"></p>
+                        <p class="text-white">Ganbare Retro Player</p> 
                     </a>
 
                     <ul class="nav">
@@ -45,15 +45,14 @@
                         {% endif %}
 
                         {% if is_granted("ROLE_ADMIN")%}
-                            <a class="nav-link text-white font-weight-bold" href="{{ path("admin_articles_index") }}">Gestion du BLOG</a>
+                            <li class="nav-item">
+                                <a class="nav-link text-white font-weight-bold" href="{{ path("admin_articles_index") }}">Gestion du BLOG</a>
+                            </li>
                         {% endif %}          
                     </ul>
                 </nav>
             {% endblock %}
         </div>
-        
-        
-        
 
         <section class="container">
             <div class="row">
@@ -67,7 +66,9 @@
             {% block footer %}
                 <div class="card w-100 bg-danger">
                     <div class="card-body">
-                        <p class="card-text text-white text-center">&copy; Copyright 2020 by (>'.')> MiniRetroBlog <('.'<)</p>
+                        <span style="font-size:larger;">
+                            <p class="card-text text-white text-center">&copy; Copyright 2020 by (>'.')> Ganbare Retro Player <('.'<)</p>
+                        </span>
                         <span style="font-size: 48px; color: Dodgerblue;">
                             <a href="https://twitter.com/CourdavaultChr2/"><i class="fab fa-twitter-square"></i></a>
                         </span>

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}MiniRetroBlog{% endblock %}
+{% block title %}Ganbare Retro Player{% endblock %}
 
 {% block body %}
     <div class="container mt-2">
@@ -8,8 +8,8 @@
         <div class="card-columns mt-2 mb-2">
             {% for article in articles %}
                 <div class="row text-center align-items-baseline">
-                    <div class="col-sm-6">
-                        <div class="card" style="width: 18rem;">
+                    <div class="col-sm-12">
+                        <div class="card">
                             <a href="{{ path('articles_details', {slug: article.slug}) }}"><img src="{{ asset('uploads/' ~ article.images[0].name)|imagine_filter('square') }}" alt="{{ article.title }}">
                             <div class="card-body"></a>
                                 <h5 class="card-title">{{article.title}}</h5>
@@ -34,8 +34,6 @@
                             </div>
                         </div>
                     </div> 
-                    
-                    
                 </div>   
             {% endfor %}
         </div>

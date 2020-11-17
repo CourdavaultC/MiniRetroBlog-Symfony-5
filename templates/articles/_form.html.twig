@@ -7,9 +7,9 @@
         {% for image in article.images %}
             <div>
                 <img src="{{ asset('/uploads/' ~ image.name) }}" alt="Image" width="150">
-                <a href="{{ path('admin_articles_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+                <a href="{{ path('admin_articles_delete_image', {id: image.id}) }}" class="mt-1 mb-1" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
             </div>
         {% endfor %}
     {% endif %}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="btn btn-primary mt-1 mb-1">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

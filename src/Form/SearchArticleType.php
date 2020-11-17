@@ -26,7 +26,7 @@ class SearchArticleType extends AbstractType
             ->add('categorie', EntityType::class, [
                 'class' => Categories::class,
                 'label' => false,
-                'placeholder' => 'Saisissez une catégorie',
+                'placeholder' => 'Choisir une catégorie',
                 'attr' => [
                     'class' => 'form-control',
                     
