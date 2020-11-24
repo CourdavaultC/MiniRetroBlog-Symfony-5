@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Articles;
 use App\Repository\ArticlesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,6 +15,26 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ArticlesController extends AbstractController
 {
+    /**
+     * @Route("/", name="list")
+     * @return void
+     */
+    public function index(ArticlesRepository $articlesRepository, Request $request){
+        // On définit le nombre d'éléments par page
+        $limit = 2;
+
+        // On récupère le numéro de la page
+        $page = (int)$request->query->get("page", 1);
+
+        // On récupère les articles de la page
+        $articles = $articlesRepository->getPaginatedArticles($page, $limit);
+
+        // On récupère le nombre total d'articles
+        $total = $articlesRepository->getTotalArticles();
+
+        return $this->render('articles/listall.html.twig', compact('articles', 'total', 'limit', 'page'));
+    }
+
     /**
      * @Route("/details/{slug}", name="details")
      */

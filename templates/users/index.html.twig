@@ -7,7 +7,7 @@
         {% for message in app.flashes('message') %}
             <div class="alert alert-success" role="alert">{{message}}</div>
         {% endfor %}
-        <ul class="list-group">
+        <ul class="list-group text-center">
             <li class="list-group-item">Bonjour {{ app.user.firstname }} {{ app.user.lastname }} !</li>
             <li class="list-group-item">Email : {{ app.user.email }}</li>
             <li class="list-group-item">Prénom : {{ app.user.firstname }}</li>

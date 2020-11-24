@@ -38,6 +38,32 @@ class ArticlesRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+    /**
+     * Returns all articles per page
+     * @return void
+     */
+    public function getPaginatedArticles($page, $limit){
+        $query = $this->createQueryBuilder('a')
+            ->where('a.active = 1')
+            ->orderBy('a.created_at')
+            ->setFirstResult(($page * $limit) - $limit)
+            ->setMaxResults($limit)
+        ;
+        return $query->getQuery()->getResult();
+    }
+
+    /**
+     * Returns number of articles
+     * @return void
+     */
+    public function getTotalArticles(){
+        $query = $this->createQueryBuilder('a')
+            ->select('COUNT(a)')
+            ->where('a.active = 1')
+        ;
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
     // /**
     //  * @return Articles[] Returns an array of Articles objects
     //  */

@@ -16,7 +16,7 @@ class MainController extends AbstractController
      */
     public function index(ArticlesRepository $articlesRepository, Request $request): Response
     {
-        $articles = $articlesRepository->findBy(['active' => true], ['created_at' => 'desc'], 5);
+        $articles = $articlesRepository->findBy(['active' => true], ['created_at' => 'desc'], 6);
 
         $form = $this->createForm(SearchArticleType::class);
 
