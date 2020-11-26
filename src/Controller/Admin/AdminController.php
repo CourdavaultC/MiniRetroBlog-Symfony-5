@@ -6,6 +6,7 @@ use App\Entity\Articles;
 use App\Entity\Categories;
 use App\Form\ArticlesType;
 use App\Form\CategoriesType;
+use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -76,6 +77,16 @@ class AdminController extends AbstractController
 
         return $this->render('admin/articles/ajout.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/userslist", name="users_list")
+     */
+    public function getUsersList(UsersRepository $usersRepository)
+    {
+        return $this->render('admin/userslist.html.twig', [
+            'users' => $usersRepository->findAll()
         ]);
     }
 }

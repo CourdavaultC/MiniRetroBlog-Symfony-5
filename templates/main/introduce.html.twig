@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail de l'article{% endblock %}
+
+{% block body %}   
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title text-center">{{articles.title}}</h5>
+                <p class="card-text">{{articles.content|raw}}</p>
+                <a href="{{ path('app_home') }}" class="btn btn-primary">Retour à l'accueil</a>
+            </div>
+        </div>
+{% endblock %}

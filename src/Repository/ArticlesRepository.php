@@ -45,7 +45,7 @@ class ArticlesRepository extends ServiceEntityRepository
     public function getPaginatedArticles($page, $limit){
         $query = $this->createQueryBuilder('a')
             ->where('a.active = 1')
-            ->orderBy('a.created_at')
+            ->orderBy('a.created_at', 'DESC')
             ->setFirstResult(($page * $limit) - $limit)
             ->setMaxResults($limit)
         ;
@@ -60,6 +60,7 @@ class ArticlesRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('a')
             ->select('COUNT(a)')
             ->where('a.active = 1')
+            ->orderBy('a.created_at')
         ;
         return $query->getQuery()->getSingleScalarResult();
     }

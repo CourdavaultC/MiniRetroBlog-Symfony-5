@@ -21,7 +21,7 @@ class ArticlesController extends AbstractController
      */
     public function index(ArticlesRepository $articlesRepository, Request $request){
         // On définit le nombre d'éléments par page
-        $limit = 2;
+        $limit = 12;
 
         // On récupère le numéro de la page
         $page = (int)$request->query->get("page", 1);

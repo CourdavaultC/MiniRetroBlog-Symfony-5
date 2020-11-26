@@ -35,4 +35,15 @@ class MainController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/presentation", name="app_presentation")
+     */
+    public function presentation(ArticlesRepository $articlesRepository)
+    {
+        $articles = $articlesRepository->findOneBy(['active' => false]);
+        return $this->render('main/introduce.html.twig', [
+            'articles' => $articles,
+        ]);
+    }
 }
