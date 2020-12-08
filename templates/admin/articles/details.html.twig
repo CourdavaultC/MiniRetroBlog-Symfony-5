@@ -3,11 +3,13 @@
 {% block title %}Détail de l'article{% endblock %}
 
 {% block body %}
-    
+    <div class="container-fluid mt-3 mb-3">
+        <div class="text-center">
             {% for image in article.images %}
                 <img src="{{ asset('uploads/' ~ image.name)|imagine_filter('square') }}" alt="{{ article.title }}">
             {% endfor %}
-            
+        </div>
+    </div>  
         
             <div class="card">
                 <div class="card-body">
